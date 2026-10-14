@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#35b8ff">
+
+    <title>Hot Gist BUK | Welcome</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+
+            font-family: Arial, Helvetica, sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+
+            background:
+    linear-gradient(
+        rgba(53, 184, 255, 0.55),
+        rgba(0, 112, 190, 0.70)
+    ),
+    url("image.png") center center / contain no-repeat,
+    #35b8ff;
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 22px;
+            text-align: center;
+        }
+
+        /* BRAND */
+
+        .brand {
+            font-size: clamp(36px, 6vw, 68px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.15;
+            overflow-wrap: anywhere;
+        }
+
+        .brand span {
+            color: #ffffff;
+        }
+
+        .tagline {
+            margin-top: 12px;
+            color: #ffffff;
+            font-size: clamp(13px, 1.6vw, 17px);
+            line-height: 1.7;
+        }
+
+        /* WELCOME */
+
+        .welcome {
+            max-width: 800px;
+            margin: 55px auto 0;
+        }
+
+        .welcome h1 {
+            margin-bottom: 18px;
+            font-size: clamp(32px, 5vw, 58px);
+            line-height: 1.2;
+        }
+
+        .welcome h1 span {
+            color: #ffffff;
+        }
+
+        .welcome p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #ffffff;
+            font-size: clamp(15px, 1.8vw, 19px);
+            line-height: 1.8;
+        }
+
+        /* LOGIN CARD */
+
+        .login-box {
+            width: 100%;
+            max-width: 720px;
+            margin: 35px auto 0;
+            padding: clamp(22px, 4vw, 38px);
+
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 20px;
+
+            box-shadow: 0 15px 45px rgba(0, 60, 120, 0.12);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .login-box h2 {
+            margin-bottom: 14px;
+            font-size: clamp(21px, 2.5vw, 28px);
+            line-height: 1.4;
+        }
+
+        .login-box p {
+            color: #ffffff;
+            font-size: clamp(14px, 1.7vw, 17px);
+            line-height: 1.8;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 26px;
+        }
+
+        .btn {
+            display: inline-flex;
+            flex: 1;
+            min-width: 0;
+            min-height: 54px;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px 20px;
+
+            border-radius: 12px;
+            text-decoration: none;
+            text-align: center;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        /* LOGIN BUTTON */
+
+        .btn-login {
+            color: #159bd8;
+            background: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        /* CREATE ACCOUNT BUTTON */
+
+        .btn-register {
+            color: #ffffff;
+            background: transparent;
+            border: 2px solid #ffffff;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 4px;
+        }
+
+        /* FEATURES */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+
+            max-width: 850px;
+            margin: 42px auto 0;
+        }
+
+        .feature {
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .feature-icon {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 20px 16px 24px;
+
+            color: #ffffff;
+            text-align: center;
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* DESKTOP */
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn:hover {
+                transform: translateY(-2px);
+            }
+
+            .btn-login:hover {
+                background: #eaf8ff;
+            }
+
+            .btn-register:hover {
+                background: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        /* TABLETS */
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 20px;
+            }
+
+            .welcome {
+                margin-top: 42px;
+            }
+
+            .login-box {
+                margin-top: 28px;
+            }
+
+            .features {
+                gap: 12px;
+                margin-top: 32px;
+            }
+        }
+
+        /* MOBILE PHONES */
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 28px 16px 18px;
+            }
+
+            .brand {
+                font-size: clamp(34px, 10vw, 44px);
+                letter-spacing: -1px;
+            }
+
+            .tagline {
+                max-width: 320px;
+                margin: 10px auto 0;
+                font-size: 13px;
+            }
+
+            .welcome {
+                margin-top: 36px;
+            }
+
+            .welcome h1 {
+                margin-bottom: 14px;
+                font-size: clamp(30px, 8.5vw, 40px);
+            }
+
+            .welcome p {
+                font-size: 15px;
+                line-height: 1.75;
+            }
+
+            .login-box {
+                margin-top: 25px;
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+
+            .login-box h2 {
+                font-size: 21px;
+            }
+
+            .login-box p {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 22px;
+            }
+
+            .btn {
+                width: 100%;
+                flex: auto;
+                min-height: 52px;
+                padding: 14px 12px;
+                font-size: 15px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px 8px;
+                margin-top: 28px;
+            }
+
+            .feature {
+                font-size: 13px;
+            }
+
+            .feature-icon {
+                font-size: 25px;
+            }
+
+            footer {
+                padding: 16px 12px 20px;
+                font-size: 12px;
+            }
+        }
+
+        /* VERY SMALL PHONES */
+
+        @media (max-width: 350px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .brand {
+                font-size: 31px;
+            }
+
+            .welcome h1 {
+                font-size: 28px;
+            }
+
+            .login-box {
+                padding: 20px 12px;
+            }
+
+            .login-box h2 {
+                font-size: 19px;
+            }
+        }
+
+        /* ACCESSIBILITY */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- WEBSITE BRAND -->
+
+        <header>
+            <div class="brand">
+                Hot Gist <span>BUK</span>
+            </div>
+
+            <p class="tagline">
+                Real Gists &bull; Campus Updates &bull; BUK Community
+            </p>
+        </header>
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome">
+
+            <h1>
+                Welcome to<br>
+                <span>Hot Gist BUK</span>
+            </h1>
+
+            <p>
+                Stay updated with the latest news, events,
+                announcements, and important information
+                from Bayero University Kano.
+            </p>
+
+        </section>
+
+        <!-- LOGIN AND REGISTRATION -->
+
+        <section class="login-box">
+
+            <h2>Login or Create an Account</h2>
+
+            <p>
+                Join the Hot Gist BUK community.
+                Please log in or create an account
+                to access campus information and features.
+            </p>
+
+            <div class="buttons">
+
+                <a href="login.html" class="btn btn-login">
+                    Login &rarr;
+                </a>
+
+                <a href="registration.html" class="btn btn-register">
+                    Create Account &rarr;
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- WEBSITE FEATURES -->
+
+        <section class="features">
+
+            <div class="feature">
+                <span class="feature-icon">&#128240;</span>
+                Latest News
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">&#128197;</span>
+                Campus Events
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">&#128276;</span>
+                Announcements
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">&#128101;</span>
+                BUK Community
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Hot Gist BUK &bull; BUK News and Updates
+    </footer>
+
+</body>
+</html>
