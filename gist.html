@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+      
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BUK Hot Gists</title>
+
+    <link rel="stylesheet" href="gist.css">
+
+</head>
+
+<body>
+
+<!-- ================================
+     HEADER & NAVIGATION
+================================= -->
+
+<header class="navbar">
+
+    <div class="logo-container">
+
+        <img
+            src="image.png"
+            alt="BUK logo"
+            class="nav-logo"
+        >
+
+        <span class="logo-text">
+            BUK Hot Gists
+        </span>
+
+    </div>
+
+
+    <div class="nav-actions">
+
+        <button id="createPostBtn">
+            + Create Post
+        </button>
+
+        <button id="dashboardBtn">
+            My Dashboard
+        </button>
+
+        <button id="profileBtn">
+            My Profile
+        </button>
+
+        <button id="adminButton" onclick="location.href='admin.html'" hidden>
+    Admin
+</button>
+
+    </div>
+
+</header>
+
+
+<!-- ================================
+     MAIN CONTENT
+================================= -->
+
+<main class="container">
+
+    <!-- Search & Categories -->
+
+    <section class="controls-card">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search posts, news, or events..."
+            >
+
+        </div>
+
+
+        <div
+            class="category-pills"
+            id="categoryContainer">
+
+            <button
+                class="pill active"
+                data-category="All">
+                All
+            </button>
+
+            <button
+                class="pill"
+                data-category="Campus News">
+                Campus News
+            </button>
+
+            <button
+                class="pill"
+                data-category="Announcements">
+                Announcements
+            </button>
+
+            <button
+                class="pill"
+                data-category="Events">
+                Events
+            </button>
+
+            <button
+                class="pill"
+                data-category="Scholarships">
+                Scholarships
+            </button>
+
+            <button
+                class="pill"
+                data-category="Sports">
+                Sports
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         POST FEED
+    ================================= -->
+
+    <section class="feed-section">
+
+        <h3>
+            Campus Feed
+        </h3>
+
+        <div
+            id="postsContainer"
+            class="posts-list">
+
+            Loading posts...
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================================
+     CREATE POST MODAL
+================================= -->
+
+<div
+    id="postModal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <span
+            id="closeModalBtn"
+            class="close-btn">
+
+            &times;
+
+        </span>
+
+
+        <h3>
+            Create New Post
+        </h3>
+
+
+        <p class="notice">
+
+            Submissions are reviewed by
+            moderators before publishing.
+
+        </p>
+
+
+        <form id="postForm">
+
+            <div class="form-group">
+
+                <label for="postTitle">
+                    Post Title
+                </label>
+
+                <input
+                    type="text"
+                    id="postTitle"
+                    placeholder="e.g. Annual SUG Sports Festival Announced"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="postCategory">
+                    Category
+                </label>
+
+                <select
+                    id="postCategory"
+                    required>
+
+                    <option value="Campus News">
+                        Campus News
+                    </option>
+
+                    <option value="Announcements">
+                        Announcements
+                    </option>
+
+                    <option value="Events">
+                        Events
+                    </option>
+
+                    <option value="Scholarships">
+                        Scholarships
+                    </option>
+
+                    <option value="Sports">
+                        Sports
+                    </option>
+
+                    <option value="General Campus Gist">
+                        General Campus Gist
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="postContent">
+                    Content
+                </label>
+
+                <textarea
+                    id="postContent"
+                    rows="5"
+                    placeholder="Write the details of your post here..."
+                    required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="postMedia">
+                    Attach Media
+                </label>
+
+                <input type="file" id="postMedia" accept="image/*">
+
+<small>
+    Select an image for your gist. Images will be compressed automatically.
+</small>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit">
+
+                Submit for Review
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+    
+
+
+<!-- Firebase / JavaScript -->
+
+<script
+    type="module"
+    src="./gist.js">
+</script>
+
+</body>
+
+</html>

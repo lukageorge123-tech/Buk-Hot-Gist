@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Hot Gist BUK</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f2f9fd;
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #38bdf8;
+            color: white;
+
+            padding: 15px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 3px 10px rgba(3, 105, 161, 0.18);
+        }
+
+        header h2 {
+            font-size: 21px;
+        }
+
+
+        #logoutBtn {
+            background: #dc2626;
+            color: white;
+
+            border: none;
+            padding: 9px 15px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #logoutBtn:hover {
+            background: #b91c1c;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 600px;
+
+            margin: 35px auto;
+
+            padding: 0 20px 40px;
+        }
+
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            border-top: 5px solid #38bdf8;
+
+            box-shadow:
+                0 5px 18px rgba(3, 105, 161, 0.10);
+        }
+
+
+        /* =========================
+           AVATAR
+        ========================= */
+
+        .avatar {
+            width: 95px;
+            height: 95px;
+
+            border-radius: 50%;
+
+            background: #0369a1;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 36px;
+            font-weight: bold;
+
+            margin: 0 auto 15px;
+
+            border: 5px solid #e0f2fe;
+        }
+
+
+        /* =========================
+           PROFILE NAME
+        ========================= */
+
+        .profile-name {
+            text-align: center;
+
+            color: #075985;
+
+            margin-bottom: 25px;
+
+            font-size: 24px;
+        }
+
+
+        /* =========================
+           ACCOUNT INFO
+        ========================= */
+
+        .info {
+            background: #f0f9ff;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid #bae6fd;
+        }
+
+        .info p {
+            margin: 10px 0;
+
+            color: #475569;
+
+            line-height: 1.5;
+        }
+
+        .info strong {
+            color: #075985;
+        }
+
+
+        .role {
+            text-transform: capitalize;
+
+            font-weight: bold;
+
+            color: #0369a1;
+        }
+
+
+        /* =========================
+           EDIT PROFILE
+        ========================= */
+
+        .profile-card h3 {
+            color: #075985;
+
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: bold;
+
+            color: #334155;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #0ea5e9;
+
+            box-shadow:
+                0 0 0 3px rgba(14, 165, 233, 0.12);
+        }
+
+        input:disabled {
+            background: #e2e8f0;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        button {
+            border: none;
+
+            padding: 12px 18px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+
+        #saveBtn {
+            background: #0369a1;
+
+            color: white;
+
+            width: 100%;
+        }
+
+        #saveBtn:hover {
+            background: #075985;
+        }
+
+
+        #dashboardBtn {
+            background: #38bdf8;
+
+            color: white;
+
+            width: 100%;
+
+            margin-top: 12px;
+        }
+
+        #dashboardBtn:hover {
+            background: #0ea5e9;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        #message {
+            text-align: center;
+
+            margin-top: 15px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 14px 15px;
+            }
+
+            header h2 {
+                font-size: 19px;
+            }
+
+            .container {
+                margin: 20px auto;
+
+                padding: 0 15px 30px;
+            }
+
+            .profile-card {
+                padding: 22px;
+            }
+
+            .profile-name {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h2>
+        Hot Gist BUK
+    </h2>
+
+    <button id="logoutBtn">
+        Logout
+    </button>
+
+</header>
+
+
+<div class="container">
+
+    <div class="profile-card">
+
+
+        <!-- AVATAR -->
+
+        <div
+            class="avatar"
+            id="avatar">
+
+            ?
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <h2
+            class="profile-name"
+            id="profileName">
+
+            Loading...
+
+        </h2>
+
+
+        <!-- ACCOUNT INFORMATION -->
+
+        <div class="info">
+
+            <p>
+
+                <strong>Email:</strong>
+
+                <span id="email">
+                    Loading...
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>Role:</strong>
+
+                <span
+                    class="role"
+                    id="role">
+
+                    Loading...
+
+                </span>
+
+            </p>
+
+
+            <p>
+
+                <strong>Account Created:</strong>
+
+                <span id="createdAt">
+
+                    Loading...
+
+                </span>
+
+            </p>
+
+        </div>
+
+
+        <!-- EDIT PROFILE -->
+
+        <h3>
+            Edit Profile
+        </h3>
+
+
+        <form id="profileForm">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="saveBtn">
+
+                Save Changes
+
+            </button>
+
+
+        </form>
+
+
+        <p id="message"></p>
+
+
+        <!-- DASHBOARD -->
+
+        <button
+            id="dashboardBtn">
+
+            Back to Dashboard
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script
+    type="module"
+    src="profile.js">
+</script>
+
+
+</body>
+
+</html>

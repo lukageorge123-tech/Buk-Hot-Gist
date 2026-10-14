@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Hot Gist BUK</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #f2f9fd;
+
+            color: #1e293b;
+        }
+
+
+        /* =========================
+           LOGIN CARD
+        ========================= */
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+
+            margin: 20px;
+
+            background: white;
+
+            padding: 32px;
+
+            border-radius: 15px;
+
+            border-top: 5px solid #38bdf8;
+
+            box-shadow:
+                0 6px 20px rgba(3, 105, 161, 0.12);
+        }
+
+
+        /* =========================
+           LOGO / TITLE
+        ========================= */
+
+        .logo {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #0369a1;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+            font-weight: bold;
+
+            border: 4px solid #e0f2fe;
+        }
+
+        h2 {
+            text-align: center;
+
+            color: #075985;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #64748b;
+
+            margin-bottom: 25px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #334155;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #0ea5e9;
+
+            box-shadow:
+                0 0 0 3px rgba(14, 165, 233, 0.12);
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        button {
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 5px;
+
+            background: #0369a1;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #075985;
+
+            transform: translateY(-1px);
+        }
+
+        button:disabled {
+            background: #94a3b8;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        #message {
+            text-align: center;
+
+            margin-top: 15px;
+
+            min-height: 20px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           REGISTER LINK
+        ========================= */
+
+        .register {
+            text-align: center;
+
+            margin-top: 22px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #e2e8f0;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .register a {
+            color: #0369a1;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .container {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="logo">
+        HG
+    </div>
+
+
+    <h2>
+        Hot Gist BUK
+    </h2>
+
+
+    <p class="subtitle">
+        Login to your account
+    </p>
+
+
+    <form id="loginForm">
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            id="loginBtn">
+
+            Login
+
+        </button>
+
+
+    </form>
+
+
+    <!-- IMPORTANT:
+         This element was missing
+         in your previous version.
+    -->
+
+    <p id="message"></p>
+
+
+    <div class="register">
+
+        Don't have an account?
+
+        <a href="registration.html">
+            Create an account
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<script type="module">
+
+    import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+
+    import {
+        getAuth,
+        signInWithEmailAndPassword
+    }
+    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
+
+    const firebaseConfig = {
+
+        apiKey:
+        "AIzaSyB3OTW__dTaKmI7wa1Afc7vzUwgfWBtMkg",
+
+        authDomain:
+        "buk-hot-gist.firebaseapp.com",
+
+        projectId:
+        "buk-hot-gist",
+
+        storageBucket:
+        "buk-hot-gist.firebasestorage.app",
+
+        messagingSenderId:
+        "108695342341",
+
+        appId:
+        "1:108695342341:web:fa1f0cc806b870f05abb6c",
+
+        measurementId:
+        "G-NP5M9XDGKJ"
+
+    };
+
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const auth =
+        getAuth(app);
+
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const message =
+        document.getElementById("message");
+
+    const loginBtn =
+        document.getElementById("loginBtn");
+
+
+    /* =========================
+       LOGIN
+    ========================= */
+
+    loginForm.addEventListener(
+        "submit",
+        async (e) => {
+
+            e.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            message.style.color = "#0369a1";
+
+            message.textContent =
+                "Logging in...";
+
+
+            loginBtn.disabled = true;
+
+            loginBtn.textContent =
+                "Logging in...";
+
+
+            try {
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                message.style.color =
+                    "#16a34a";
+
+
+                message.textContent =
+                    "Login successful!";
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "gist.html";
+
+                }, 700);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                message.style.color =
+                    "#dc2626";
+
+
+                if (
+                    error.code ===
+                    "auth/invalid-credential"
+                ) {
+
+                    message.textContent =
+                        "Incorrect email or password.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    message.textContent =
+                        "Please enter a valid email address.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/user-not-found"
+                ) {
+
+                    message.textContent =
+                        "No account was found with this email.";
+
+                }
+
+                else if (
+                    error.code ===
+                    "auth/wrong-password"
+                ) {
+
+                    message.textContent =
+                        "Incorrect password.";
+
+                }
+
+                else {
+
+                    message.textContent =
+                        "Login failed. Please try again.";
+
+                }
+
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "Login";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

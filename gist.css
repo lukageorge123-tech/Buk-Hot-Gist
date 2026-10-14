@@ -1,0 +1,575 @@
+/* ==========================================
+   HOT GIST BUK - SKY BLUE / BLUE / WHITE
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f2f9fd;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar {
+    background: #38bdf8;
+    color: white;
+    padding: 14px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 3px 12px rgba(0, 91, 150, 0.18);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+}
+
+.nav-logo {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+    background: white;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   NAVIGATION BUTTONS
+========================================== */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nav-actions button {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    padding: 9px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.nav-actions button:hover {
+    background: white;
+    color: #075985;
+    transform: translateY(-1px);
+}
+
+#createPostBtn {
+    background: white;
+    color: #0369a1;
+    border-color: white;
+}
+
+#createPostBtn:hover {
+    background: #e0f2fe;
+    color: #075985;
+}
+
+#adminBtn {
+    background: #075985;
+    border-color: #075985;
+}
+
+#adminBtn:hover {
+    background: white;
+    color: #075985;
+}
+/* ==========================================
+   GIST IMAGE - RESPONSIVE
+========================================== */
+
+.gist-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+/* Phone */
+@media (max-width: 600px) {
+
+    .gist-image {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 12px 0;
+    }
+
+}
+
+/* Desktop */
+@media (min-width: 601px) {
+
+    .gist-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin: 15px 0;
+    }
+
+    {}}
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 18px;
+}
+
+
+/* ==========================================
+   SEARCH & CATEGORY CARD
+========================================== */
+
+.controls-card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #dbeafe;
+    box-shadow: 0 4px 16px rgba(14, 116, 144, 0.08);
+}
+
+.search-box {
+    margin-bottom: 16px;
+}
+
+.search-box input {
+    width: 100%;
+    height: 46px;
+    padding: 0 15px;
+    border: 1px solid #bae6fd;
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+    background: #f8fcff;
+    transition: 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: #0284c7;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+}
+
+
+/* ==========================================
+   CATEGORY PILLS
+========================================== */
+
+.category-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+}
+
+.pill {
+    border: 1px solid #bae6fd;
+    background: #e0f2fe;
+    color: #075985;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.pill:hover {
+    background: #bae6fd;
+    color: #0369a1;
+}
+
+.pill.active {
+    background: #0369a1;
+    color: white;
+    border-color: #0369a1;
+}
+
+
+/* ==========================================
+   CAMPUS FEED
+========================================== */
+
+.feed-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #075985;
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* ==========================================
+   POST CARD
+========================================== */
+
+.post-card {
+    background: white;
+    padding: 20px;
+    border-radius: 13px;
+    border: 1px solid #dbeafe;
+    box-shadow: 0 3px 12px rgba(14, 116, 144, 0.06);
+    transition: 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(14, 116, 144, 0.12);
+}
+
+
+/* ==========================================
+   POST HEADER
+========================================== */
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.category-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 9px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.post-meta {
+    color: #64748b;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   POST CONTENT
+========================================== */
+
+.post-card h4 {
+    color: #0f172a;
+    font-size: 18px;
+    line-height: 1.35;
+    margin-bottom: 9px;
+}
+
+.post-card p {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+}
+
+
+/* ==========================================
+   POST ACTIONS
+========================================== */
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-top: 1px solid #e0f2fe;
+    padding-top: 13px;
+}
+
+.action-btn {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 0;
+    transition: 0.2s ease;
+}
+
+.action-btn:hover {
+    color: #0284c7;
+}
+
+
+/* ==========================================
+   CREATE POST MODAL
+========================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 105, 161, 0.35);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 16px;
+    position: relative;
+    border-top: 5px solid #38bdf8;
+    box-shadow: 0 15px 50px rgba(3, 105, 161, 0.25);
+}
+
+.modal-content h3 {
+    color: #075985;
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+.close-btn {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+
+/* ==========================================
+   FORM
+========================================== */
+
+.notice {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 11px 12px;
+    font-size: 14px;
+    outline: none;
+    background: #f8fcff;
+    transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0284c7;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   SUBMIT BUTTON
+========================================== */
+
+.btn-submit {
+    width: 100%;
+    border: none;
+    background: #0369a1;
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: #075985;
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .logo-container {
+        width: 100%;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 3px;
+    }
+
+    .nav-actions button {
+        flex-shrink: 0;
+    }
+
+    .container {
+        margin-top: 20px;
+        padding: 0 12px;
+    }
+
+    .controls-card {
+        padding: 15px;
+    }
+
+    .post-card {
+        padding: 16px;
+    }
+
+    .post-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .post-card h4 {
+        font-size: 17px;
+    }
+
+    .post-actions {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .modal-content {
+        padding: 22px 18px;
+        border-radius: 13px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 400px) {
+
+    .logo-text {
+        font-size: 17px;
+    }
+
+    .nav-actions button {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .post-card h4 {
+        font-size: 16px;
+    }
+
+    .post-card p {
+        font-size: 13px;
+    }
+
+}

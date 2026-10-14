@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Dashboard - Hot Gist BUK</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f2f9fd;
+            color: #1e293b;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #38bdf8;
+            color: white;
+            padding: 15px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 3px 10px rgba(3, 105, 161, 0.18);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        button {
+            border: none;
+            padding: 9px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .nav-btn {
+            background: white;
+            color: #0369a1;
+        }
+
+        .nav-btn:hover {
+            background: #e0f2fe;
+        }
+
+        #logoutBtn {
+            background: #dc2626;
+            color: white;
+        }
+
+        #logoutBtn:hover {
+            background: #b91c1c;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px 40px;
+        }
+
+        /* =========================
+           WELCOME CARD
+        ========================= */
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+
+            border-left: 5px solid #0ea5e9;
+
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.08);
+        }
+
+        .welcome h2 {
+            color: #075985;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #64748b;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+
+            border-top: 4px solid #38bdf8;
+
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.08);
+        }
+
+        .stat-card h3 {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0369a1;
+        }
+
+        /* =========================
+           MY POSTS
+        ========================= */
+
+        .posts-heading {
+            color: #075985;
+            margin-bottom: 15px;
+        }
+
+        .post-card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 15px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 3px 10px rgba(3, 105, 161, 0.07);
+
+            border-left: 4px solid #38bdf8;
+        }
+
+        .post-card h3 {
+            color: #075985;
+            margin-bottom: 10px;
+        }
+
+        .post-info {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-top: 10px;
+        }
+
+        .pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .approved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        #loading {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        /* =========================
+           EMPTY / MESSAGE
+        ========================= */
+
+        .empty-message {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            color: #64748b;
+            box-shadow: 0 3px 10px rgba(3, 105, 161, 0.06);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 14px 15px;
+                align-items: flex-start;
+                gap: 12px;
+                flex-direction: column;
+            }
+
+            header h2 {
+                font-size: 19px;
+            }
+
+            .header-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .header-buttons button {
+                font-size: 13px;
+                padding: 8px 11px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 0 15px 30px;
+            }
+
+            .welcome {
+                padding: 20px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 18px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .post-card {
+                padding: 18px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left">
+        <h2>Hot Gist BUK</h2>
+    </div>
+
+    <div class="header-buttons">
+
+        <button class="nav-btn"
+                onclick="window.location.href='gist.html'">
+            Hot Gist
+        </button>
+
+        <button class="nav-btn"
+                onclick="window.location.href='profile.html'">
+            My Profile
+        </button>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h2>
+            Welcome, <span id="userName">Student</span>
+        </h2>
+
+        <p id="userEmail">
+            Loading account...
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <h3>Total Posts</h3>
+
+            <div
+                class="stat-number"
+                id="totalPosts">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>Approved</h3>
+
+            <div
+                class="stat-number"
+                id="approvedPosts">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>Pending</h3>
+
+            <div
+                class="stat-number"
+                id="pendingPosts">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MY POSTS -->
+
+    <h2 class="posts-heading">
+        My Posts
+    </h2>
+
+
+    <div id="postsContainer">
+
+        <div id="loading">
+            Loading your posts...
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module" src="dashboard.js"></script>
+
+</body>
+
+</html>
